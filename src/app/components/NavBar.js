@@ -89,22 +89,22 @@ export default function Navbar() {
               HOME
             </Link>
 
-            <Link href="/about" onClick={() => setOpen(false)} className="block hover:text-purple-700">
+            <Link href="#about" onClick={() => setOpen(false)} className="block hover:text-purple-700">
               ABOUT
             </Link>
 
-            <Link href="/solutions" onClick={() => setOpen(false)} className="block hover:text-purple-700">
+            <Link href="#solution" onClick={() => setOpen(false)} className="block hover:text-purple-700">
               SOLUTIONS
             </Link>
 
-            <Link href="/pricing" onClick={() => setOpen(false)} className="block hover:text-purple-700">
+            <Link href="#pricing" onClick={() => setOpen(false)} className="block hover:text-purple-700">
               PRICING
             </Link>
           </div>
 
           {/* CTA */}
           <div className="px-6 pb-6">
-            <Link href="/contact" onClick={() => setOpen(false)}>
+            <Link href="#contact" onClick={() => setOpen(false)}>
               <button className="w-full py-3 rounded-xl 
                 bg-gradient-to-r from-purple-700 to-purple-900 
                 text-white font-semibold shadow-md">

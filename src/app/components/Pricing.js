@@ -1,4 +1,18 @@
+"use client";
+
+import { useState } from "react";
+
 export default function Pricing() {
+
+  const [currency, setCurrency] = useState("USD");
+  const rate = 4200;
+
+  const formatPrice = (price) => {
+    if (currency === "MMK") {
+      return `${(price * rate).toLocaleString()} MMK`;
+    }
+    return `${price.toLocaleString()} USD`;
+  };
   return (
     <section id="pricing" className="w-full bg-gray-50 py-24">
       <div className="max-w-7xl mx-auto px-6">
@@ -24,6 +38,41 @@ export default function Pricing() {
           <p className="mt-4 text-gray-500 max-w-2xl mx-auto text-sm md:text-base">
             Simple plans with transparent pricing, built to help your business scale with confidence.
           </p>
+          {/* 🔥 Currency Toggle (added cleanly) */}
+          <div className="mt-6 flex justify-center">
+            <div className="relative flex bg-white/70 backdrop-blur-md border border-gray-200 rounded-full p-1 shadow-md">
+
+              {/* Sliding Background */}
+              <div
+                className={`absolute top-1 bottom-1 w-1/2 rounded-full bg-gradient-to-r from-purple-600 to-purple-500 shadow transition-all duration-300 ${currency === "MMK" ? "translate-x-full" : "translate-x-0"
+                  }`}
+              />
+
+              {/* THB */}
+              <button
+                onClick={() => setCurrency("USD")}
+                className={`relative z-10 px-5 py-1.5 text-sm font-medium rounded-full transition ${currency === "USD"
+                    ? "text-white"
+                    : "text-gray-600 hover:text-gray-900"
+                  }`}
+              >
+                USD
+              </button>
+
+              {/* MMK */}
+              <button
+                onClick={() => setCurrency("MMK")}
+                className={`relative z-10 px-5 py-1.5 text-sm font-medium rounded-full transition ${currency === "MMK"
+                    ? "text-white"
+                    : "text-gray-600 hover:text-gray-900"
+                  }`}
+              >
+                MMK
+              </button>
+
+            </div>
+          </div>
+
         </div>
 
         {/* Cards */}
@@ -40,7 +89,7 @@ export default function Pricing() {
             <p className="text-xs text-purple-600 mb-4">for Small Businesses</p>
 
             <p className="text-3xl font-bold text-gray-900">
-              800 THB
+              {formatPrice(25)}
               <span className="text-sm text-gray-500 font-normal ml-1">/month</span>
             </p>
 
@@ -125,10 +174,10 @@ export default function Pricing() {
             <h3 className="text-lg font-semibold">Business Package</h3>
             <p className="text-xs text-purple-300 mb-4">for Growing Businesses</p>
 
-            <p className="text-sm text-purple-200">Setup – 7,000 THB</p>
+            <p className="text-sm text-purple-200">Setup – {formatPrice(250)}</p>
 
             <p className="text-3xl font-bold mt-1">
-              1,500 THB
+              {formatPrice(50)}
               <span className="text-sm ml-1 text-gray-300 font-normal">/month</span>
             </p>
 
@@ -211,10 +260,10 @@ export default function Pricing() {
             <h3 className="text-lg font-semibold">Enterprise Plan</h3>
             <p className="text-xs text-purple-200 mb-4">for Large Businesses</p>
 
-            <p className="text-sm text-purple-200">Setup – 10,000 THB</p>
+            <p className="text-sm text-purple-200">Setup – {formatPrice(350)}</p>
 
             <p className="text-3xl font-bold mt-1">
-              3,000 THB
+              {formatPrice(100)}
               <span className="text-sm ml-1 font-normal">/month</span>
             </p>
 
