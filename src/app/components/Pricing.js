@@ -1,9 +1,11 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 
 export default function Pricing() {
 
+  const [liteDuration, setLiteDuration] = useState("6m");
   const [currency, setCurrency] = useState("USD");
   const rate = 4200;
 
@@ -52,8 +54,8 @@ export default function Pricing() {
               <button
                 onClick={() => setCurrency("USD")}
                 className={`relative z-10 px-5 py-1.5 text-sm font-medium rounded-full transition ${currency === "USD"
-                    ? "text-white"
-                    : "text-gray-600 hover:text-gray-900"
+                  ? "text-white"
+                  : "text-gray-600 hover:text-gray-900"
                   }`}
               >
                 USD
@@ -63,8 +65,8 @@ export default function Pricing() {
               <button
                 onClick={() => setCurrency("MMK")}
                 className={`relative z-10 px-5 py-1.5 text-sm font-medium rounded-full transition ${currency === "MMK"
-                    ? "text-white"
-                    : "text-gray-600 hover:text-gray-900"
+                  ? "text-white"
+                  : "text-gray-600 hover:text-gray-900"
                   }`}
               >
                 MMK
@@ -80,16 +82,40 @@ export default function Pricing() {
 
           {/* LITE */}
           <div className="bg-white p-7 rounded-2xl border border-gray-200 
-    shadow-[0_6px_20px_rgba(0,0,0,0.05)]
-    transition duration-300 ease-out
-    hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(0,0,0,0.12)]
-    flex flex-col">
+shadow-[0_6px_20px_rgba(0,0,0,0.05)]
+transition duration-300 ease-out
+hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(0,0,0,0.12)]
+flex flex-col">
 
             <h3 className="text-lg font-semibold text-gray-900">Lite Plan</h3>
             <p className="text-xs text-purple-600 mb-4">for Small Businesses</p>
 
+            {/* 🔥 Duration Toggle (NEW - minimal, premium) */}
+            <div className="flex gap-2 mb-3">
+              <button
+                onClick={() => setLiteDuration("1m")}
+                className={`text-xs px-3 py-1 rounded-full border ${liteDuration === "1m"
+                    ? "bg-purple-600 text-white"
+                    : "text-gray-500"
+                  }`}
+              >
+                1 Month
+              </button>
+
+              <button
+                onClick={() => setLiteDuration("6m")}
+                className={`text-xs px-3 py-1 rounded-full border ${liteDuration === "6m"
+                    ? "bg-purple-600 text-white"
+                    : "text-gray-500"
+                  }`}
+              >
+                6 Months
+              </button>
+            </div>
+
+            {/* 🔥 Dynamic Price */}
             <p className="text-3xl font-bold text-gray-900">
-              {formatPrice(25)}
+              {formatPrice(liteDuration === "1m" ? 30 : 25)}
               <span className="text-sm text-gray-500 font-normal ml-1">/month</span>
             </p>
 
@@ -98,36 +124,28 @@ export default function Pricing() {
             </p>
 
             <button className="w-full py-2.5 rounded-lg bg-purple-600 text-white text-sm font-medium 
-      shadow hover:bg-purple-700 transition mb-6">
+    shadow hover:bg-purple-700 transition mb-6">
               Get Started
             </button>
 
             {/* Divider */}
             <div className="relative flex items-center justify-center my-6">
-
-              {/* Left line */}
               <div className="flex-1 h-[1px] bg-gray-300"></div>
-
-              {/* Dot */}
               <div className="w-1.5 h-1.5 bg-gray-400 rounded-full mx-2"></div>
 
-              {/* Text badge */}
               <span className="px-3 py-1 text-[11px] font-medium 
-    text-gray-800 
-    bg-white 
-    border border-purple-500/40 
-    rounded-full 
-    shadow-[0_2px_8px_rgba(124,58,237,0.15)]">
+      text-gray-800 
+      bg-white 
+      border border-purple-500/40 
+      rounded-full 
+      shadow-[0_2px_8px_rgba(124,58,237,0.15)]">
                 WHAT YOU WILL GET
               </span>
 
-              {/* Dot */}
               <div className="w-1.5 h-1.5 bg-gray-400 rounded-full mx-2"></div>
-
-              {/* Right line */}
               <div className="flex-1 h-[1px] bg-gray-300"></div>
-
             </div>
+
             <ul className="space-y-3 text-sm flex-1">
               {[
                 "Sales / checkout",
@@ -148,7 +166,7 @@ export default function Pricing() {
                 Limitations
               </p>
               <ul className="space-y-2 text-sm text-gray-400">
-                {["No customization", "No support", "No inventory"].map((item, i) => (
+                {["No customization", "Functional Support Assistant", "No inventory"].map((item, i) => (
                   <li key={i} className="flex items-center gap-3">
                     <img src="cross.svg" className="w-3 h-3 opacity-70" />
                     {item}
@@ -157,7 +175,6 @@ export default function Pricing() {
               </ul>
             </div>
           </div>
-
           {/* BUSINESS (FEATURED) */}
           <div className="bg-[#0b0736] text-white p-8 rounded-2xl 
     shadow-[0_20px_50px_rgba(0,0,0,0.35)]
@@ -185,9 +202,13 @@ export default function Pricing() {
               6 months contract
             </p>
 
-            <button className="w-full py-2.5 rounded-lg bg-white text-purple-700 text-sm font-medium mb-6">
-              Choose Plan
-            </button>
+            <Link
+              href="#contact"
+              className="block w-full text-center py-2.5 rounded-lg bg-white text-purple-700 text-sm font-medium mb-6"
+            >
+              Contact Sales
+            </Link>
+
 
             {/* Divider */}
             <div className="relative flex items-center justify-center my-6">
@@ -270,10 +291,12 @@ export default function Pricing() {
             <p className="text-sm text-purple-200/80 mt-1 mb-6">
               12 months contract
             </p>
-
-            <button className="w-full py-2.5 rounded-lg bg-white text-purple-700 text-sm font-medium mb-6">
+            <Link
+              href="#contact"
+              className="block w-full text-center py-2.5 rounded-lg bg-white text-purple-700 text-sm font-medium mb-6"
+            >
               Contact Sales
-            </button>
+            </Link>
 
             {/* Divider */}
             <div className="relative flex items-center justify-center my-6">
@@ -334,6 +357,7 @@ export default function Pricing() {
               </ul>
             </div>
           </div>
+
         </div>
       </div>
     </section>

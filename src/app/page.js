@@ -4,6 +4,7 @@ import About from "./components/About";
 import Solution from "./components/Solution";
 import Pricing from "./components/Pricing";
 import Contact from "./components/Contact";
+import Footer from "./components/Footer";
 
 export default function Yatyarzar() {
   return (
@@ -14,6 +15,7 @@ export default function Yatyarzar() {
       <Solution />
       <Pricing />
       <Contact />
+      <Footer />
     </>
   );
 }

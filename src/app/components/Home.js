@@ -1,3 +1,4 @@
+import Link from "next/link";
 export default function Hero() {
   return (
     <section className="relative w-full overflow-hidden bg-white md:bg-[#f7f6fb]">
@@ -35,7 +36,9 @@ export default function Hero() {
           Software solutions focused on reliability, performance, and long-term business growth.
         </p>
 
-       <button className="group inline-flex items-center gap-2.5
+        <Link
+          href="#contact"
+          className="group inline-flex items-center gap-2.5
   px-8 py-3.5 rounded-xl
   text-sm font-semibold text-white
   bg-gradient-to-r from-purple-800 to-purple-900
@@ -44,24 +47,18 @@ export default function Hero() {
   hover:-translate-y-1 hover:scale-[1.02]
   hover:shadow-[0_18px_40px_rgba(124,58,237,0.35)]
   active:scale-[0.98]
-  relative overflow-hidden">
+  relative overflow-hidden"
+        >
 
-  {/* Subtle shine effect */}
-  <span className="absolute inset-0 bg-white/10 opacity-0 
-    group-hover:opacity-100 transition duration-300"></span>
+          {/* Shine */}
+          <span className="absolute inset-0 bg-white/10 opacity-0 
+  group-hover:opacity-100 transition duration-300"></span>
 
-  {/* Text */}
-  <span className="relative z-10">
-    Start Free Trial
-  </span>
-
-  {/* Arrow */}
-  <span className="relative z-10 text-lg 
-    transition-transform duration-300 
-    group-hover:translate-x-1">
-    →
-  </span>
-</button>
+          {/* Text */}
+          <span className="relative z-10">
+            Contact Us
+          </span>
+        </Link>
 
         {/* Image */}
         <div className="mt-20 flex justify-center">

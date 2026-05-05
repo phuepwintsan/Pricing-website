@@ -1,3 +1,4 @@
+import Link from "next/link";
 export default function Solutions() {
   return (
     <section id="solution" className="w-full bg-white py-24">
@@ -79,7 +80,9 @@ export default function Solutions() {
 
             </div>
 
-           <button className="group inline-flex items-center gap-2
+            <Link
+              href="/#pricing"
+              className="group inline-flex items-center gap-2
   px-8 py-3 rounded-xl
   text-sm font-semibold text-white
   bg-gradient-to-r from-purple-800 to-purple-900
@@ -87,14 +90,14 @@ export default function Solutions() {
   transition-all duration-300 ease-out
   hover:-translate-y-1 hover:scale-[1.02]
   hover:shadow-[0_15px_35px_rgba(124,58,237,0.35)]
-  active:scale-[0.98]">
+  active:scale-[0.98]"
+            >
+              Explore Pricing
 
-  Explore Pricing
-
-  <span className="transition-transform duration-300 group-hover:translate-x-1">
-    →
-  </span>
-</button>
+              <span className="transition-transform duration-300 group-hover:translate-x-1">
+                →
+              </span>
+            </Link>
           </div>
 
           {/* RIGHT IMAGE */}
@@ -108,11 +111,11 @@ export default function Solutions() {
 
         </div>
 
-       {/* Bottom Cards */}
-<div className="grid md:grid-cols-3 gap-6 mt-20">
+        {/* Bottom Cards */}
+        <div className="grid md:grid-cols-3 gap-6 mt-20">
 
-  {/* Card */}
-  <div className="group bg-white p-6 rounded-2xl border border-gray-200 
+          {/* Card */}
+          <div className="group bg-white p-6 rounded-2xl border border-gray-200 
     shadow-[0_4px_14px_rgba(0,0,0,0.04)] 
     flex items-start gap-5 h-full
     transition duration-300 ease-out
@@ -120,26 +123,26 @@ export default function Solutions() {
     hover:shadow-[0_20px_40px_rgba(0,0,0,0.10)]
     hover:ring-1 hover:ring-purple-200">
 
-    <div className="w-12 h-12 flex items-center justify-center 
+            <div className="w-12 h-12 flex items-center justify-center 
       rounded-full bg-purple-900 shrink-0
       transition duration-300
       group-hover:bg-purple-700 group-hover:shadow-md">
 
-      <img src="shopping.svg" className="w-5 h-5 opacity-90 group-hover:opacity-100" />
-    </div>
+              <img src="shopping.svg" className="w-5 h-5 opacity-90 group-hover:opacity-100" />
+            </div>
 
-    <div className="flex flex-col justify-start">
-      <h3 className="text-[16px] font-medium text-gray-900 mb-1 min-h-[24px]">
-        Easy Sales Management
-      </h3>
-      <p className="text-sm text-gray-600 leading-relaxed">
-        Handle transactions quickly and smoothly.
-      </p>
-    </div>
-  </div>
+            <div className="flex flex-col justify-start">
+              <h3 className="text-[16px] font-medium text-gray-900 mb-1 min-h-[24px]">
+                Easy Sales Management
+              </h3>
+              <p className="text-sm text-gray-600 leading-relaxed">
+                Handle transactions quickly and smoothly.
+              </p>
+            </div>
+          </div>
 
-  {/* Card */}
-  <div className="group bg-white p-6 rounded-2xl border border-gray-200 
+          {/* Card */}
+          <div className="group bg-white p-6 rounded-2xl border border-gray-200 
     shadow-[0_4px_14px_rgba(0,0,0,0.04)] 
     flex items-start gap-5 h-full
     transition duration-300 ease-out
@@ -147,26 +150,26 @@ export default function Solutions() {
     hover:shadow-[0_20px_40px_rgba(0,0,0,0.10)]
     hover:ring-1 hover:ring-purple-200">
 
-    <div className="w-12 h-12 flex items-center justify-center 
+            <div className="w-12 h-12 flex items-center justify-center 
       rounded-full bg-purple-900 shrink-0
       transition duration-300
       group-hover:bg-purple-700 group-hover:shadow-md">
 
-      <img src="box.svg" className="w-5 h-5 opacity-90 group-hover:opacity-100" />
-    </div>
+              <img src="box.svg" className="w-5 h-5 opacity-90 group-hover:opacity-100" />
+            </div>
 
-    <div className="flex flex-col justify-start">
-      <h3 className="text-[16px] font-medium text-gray-900 mb-1 min-h-[24px]">
-        Real-Time Inventory
-      </h3>
-      <p className="text-sm text-gray-600 leading-relaxed">
-        Always know your stock at any time.
-      </p>
-    </div>
-  </div>
+            <div className="flex flex-col justify-start">
+              <h3 className="text-[16px] font-medium text-gray-900 mb-1 min-h-[24px]">
+                Real-Time Inventory
+              </h3>
+              <p className="text-sm text-gray-600 leading-relaxed">
+                Always know your stock at any time.
+              </p>
+            </div>
+          </div>
 
-  {/* Card */}
-  <div className="group bg-white p-6 rounded-2xl border border-gray-200 
+          {/* Card */}
+          <div className="group bg-white p-6 rounded-2xl border border-gray-200 
     shadow-[0_4px_14px_rgba(0,0,0,0.04)] 
     flex items-start gap-5 h-full
     transition duration-300 ease-out
@@ -174,25 +177,25 @@ export default function Solutions() {
     hover:shadow-[0_20px_40px_rgba(0,0,0,0.10)]
     hover:ring-1 hover:ring-purple-200">
 
-    <div className="w-12 h-12 flex items-center justify-center 
+            <div className="w-12 h-12 flex items-center justify-center 
       rounded-full bg-purple-900 shrink-0
       transition duration-300
       group-hover:bg-purple-700 group-hover:shadow-md">
 
-      <img src="chart-bar.svg" className="w-5 h-5 opacity-90 group-hover:opacity-100" />
-    </div>
+              <img src="chart-bar.svg" className="w-5 h-5 opacity-90 group-hover:opacity-100" />
+            </div>
 
-    <div className="flex flex-col justify-start">
-      <h3 className="text-[16px] font-medium text-gray-900 mb-1 min-h-[24px]">
-        Clear Reports
-      </h3>
-      <p className="text-sm text-gray-600 leading-relaxed">
-        Understand your business performance.
-      </p>
-    </div>
-  </div>
+            <div className="flex flex-col justify-start">
+              <h3 className="text-[16px] font-medium text-gray-900 mb-1 min-h-[24px]">
+                Clear Reports
+              </h3>
+              <p className="text-sm text-gray-600 leading-relaxed">
+                Understand your business performance.
+              </p>
+            </div>
+          </div>
 
-</div>
+        </div>
       </div>
     </section>
   );
