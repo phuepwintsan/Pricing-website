@@ -1,4 +1,78 @@
+"use client";
+
+import { useState } from "react";
+
 export default function Contact() {
+
+  // Form State
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
+
+  // Loading State
+  const [loading, setLoading] = useState(false);
+
+  // Input Change
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  // Submit Form
+  const handleSubmit = async (e) => {
+
+    e.preventDefault();
+
+    try {
+
+      setLoading(true);
+
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+
+        alert("Message sent successfully!");
+
+        // Reset form
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          message: "",
+        });
+
+      } else {
+
+        alert("Failed to send message");
+
+      }
+
+    } catch (error) {
+
+      console.log(error);
+
+      alert("Something went wrong");
+
+    } finally {
+
+      setLoading(false);
+
+    }
+  };
+
   return (
     <section id="contact" className="w-full bg-[#ffffff] py-20">
       <div className="max-w-6xl mx-auto px-12">
@@ -175,94 +249,114 @@ export default function Contact() {
               Contact with Yatyarzar
             </h3>
 
-            <form className="space-y-6">
+            <form onSubmit={handleSubmit}>
+  {/* Full Name */}
+  <div>
+    <label className="text-sm font-medium text-gray-700">
+      Full Name
+    </label>
 
-              {/* Full Name */}
-              <div>
-                <label className="text-sm font-medium text-gray-700">
-                  Full Name
-                </label>
-                <input
-                  type="text"
-                  placeholder="Enter your name"
-                  className="w-full mt-2 px-4 py-2.5 
-        text-sm text-gray-800
-        border border-gray-300 rounded-lg 
-        outline-none
-        focus:ring-2 focus:ring-purple-500/30 
-        focus:border-purple-500
-        transition"
-                />
-              </div>
+    <input
+      type="text"
+      name="name"
+      value={formData.name}
+      onChange={handleChange}
+      placeholder="Enter your name"
+      required
+      className="w-full mt-2 px-4 py-2.5 
+      text-sm text-gray-800
+      border border-gray-300 rounded-lg 
+      outline-none
+      focus:ring-2 focus:ring-purple-500/30 
+      focus:border-purple-500
+      transition"
+    />
+  </div>
 
-              {/* Email */}
-              <div>
-                <label className="text-sm font-medium text-gray-700">
-                  Email Address
-                </label>
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  className="w-full mt-2 px-4 py-2.5 
-        text-sm text-gray-800
-        border border-gray-300 rounded-lg 
-        outline-none
-        focus:ring-2 focus:ring-purple-500/30 
-        focus:border-purple-500
-        transition"
-                />
-              </div>
+  {/* Email */}
+  <div>
+    <label className="text-sm font-medium text-gray-700">
+      Email Address
+    </label>
 
-              {/* Phone */}
-              <div>
-                <label className="text-sm font-medium text-gray-700">
-                  Phone Number
-                </label>
-                <input
-                  type="text"
-                  placeholder="Enter your phone number"
-                  className="w-full mt-2 px-4 py-2.5 
-        text-sm text-gray-800
-        border border-gray-300 rounded-lg 
-        outline-none
-        focus:ring-2 focus:ring-purple-500/30 
-        focus:border-purple-500
-        transition"
-                />
-              </div>
+    <input
+      type="email"
+      name="email"
+      value={formData.email}
+      onChange={handleChange}
+      placeholder="Enter your email"
+      required
+      className="w-full mt-2 px-4 py-2.5 
+      text-sm text-gray-800
+      border border-gray-300 rounded-lg 
+      outline-none
+      focus:ring-2 focus:ring-purple-500/30 
+      focus:border-purple-500
+      transition"
+    />
+  </div>
 
-              {/* Message */}
-              <div>
-                <label className="text-sm font-medium text-gray-700">
-                  Message
-                </label>
-                <textarea
-                  rows="5"
-                  placeholder="Write your message..."
-                  className="w-full mt-2 px-4 py-3 
-        text-sm text-gray-800
-        border border-gray-300 rounded-lg 
-        outline-none resize-none
-        focus:ring-2 focus:ring-purple-500/30 
-        focus:border-purple-500
-        transition"
-                ></textarea>
-              </div>
+  {/* Phone */}
+  <div>
+    <label className="text-sm font-medium text-gray-700">
+      Phone Number
+    </label>
 
-              {/* Button */}
-              <button
-                type="submit"
-                className="w-full py-3 rounded-lg 
-      bg-gradient-to-r from-purple-600 to-purple-700 
-      text-white font-medium text-sm
-      shadow-[0_6px_20px_rgba(124,58,237,0.3)]
-      hover:shadow-[0_10px_30px_rgba(124,58,237,0.4)]
-      transition duration-200"
-              >
-                Send Message
-              </button>
+    <input
+      type="text"
+      name="phone"
+      value={formData.phone}
+      onChange={handleChange}
+      placeholder="Enter your phone number"
+      className="w-full mt-2 px-4 py-2.5 
+      text-sm text-gray-800
+      border border-gray-300 rounded-lg 
+      outline-none
+      focus:ring-2 focus:ring-purple-500/30 
+      focus:border-purple-500
+      transition"
+    />
+  </div>
 
-            </form>
+  {/* Message */}
+  <div>
+    <label className="text-sm font-medium text-gray-700">
+      Message
+    </label>
+
+    <textarea
+      rows="5"
+      name="message"
+      value={formData.message}
+      onChange={handleChange}
+      placeholder="Write your message..."
+      required
+      className="w-full mt-2 px-4 py-3 
+      text-sm text-gray-800
+      border border-gray-300 rounded-lg 
+      outline-none resize-none
+      focus:ring-2 focus:ring-purple-500/30 
+      focus:border-purple-500
+      transition"
+    ></textarea>
+  </div>
+
+  {/* Button */}
+  <button
+    type="submit"
+    disabled={loading}
+    className="w-full py-3 rounded-lg 
+    bg-gradient-to-r from-purple-600 to-purple-700 
+    text-white font-medium text-sm
+    shadow-[0_6px_20px_rgba(124,58,237,0.3)]
+    hover:shadow-[0_10px_30px_rgba(124,58,237,0.4)]
+    transition duration-200
+    disabled:opacity-70"
+  >
+    {loading ? "Sending..." : "Send Message"}
+  </button>
+
+</form>
           </div>
         </div>
       </div>
